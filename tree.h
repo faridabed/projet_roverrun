@@ -45,4 +45,6 @@ t_localisation moveErg(t_localisation loc, t_move move);
 void movements(t_localisation* loc, t_move move);
 
 void dispMvmt(t_nnode* node);
+
+
 #endif //UNTITLED1_TREE_H

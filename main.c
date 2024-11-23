@@ -15,7 +15,6 @@ int main() {
         }
         printf("\n");
     }
-    // printf the costs, aligned left 5 digits
     for (int i = 0; i < map.y_max; i++)
     {
         for (int j = 0; j < map.x_max; j++)
@@ -27,6 +26,8 @@ int main() {
     displayMap(map);
 
     findBase(map, 2, 2, 0);
+
+    /*TEST/
     /*
     t_nnode * node1 = NULL;
     node1 = malloc(sizeof(t_nnode));
@@ -69,8 +70,6 @@ int main() {
 
       free(bestleaf);
       bestleaf = NULL;
-
-
 
     // int t[3] = {1,2,3};
     /* t_stack* stck = NULL;

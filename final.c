@@ -41,3 +41,5 @@ void findBase(t_map map, int x, int y, t_orientation orientation){
     printf("Base Atteinte \n");
 
 }
+
+/* relecture ?*/

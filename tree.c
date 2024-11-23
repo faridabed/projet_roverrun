@@ -81,10 +81,7 @@ t_nnode* creernoeud(t_nnode* prev, int dpth, t_move* avails, int idx, t_localisa
     }
 
     new->soils = getSoils(&new->loca, map);
-    //printf("Coordonnées avant getCost: x=%d, y=%d\n", new->loca.pos.x, new->loca.pos.y);
     new->cost = getCost(&new->loca, map);
-    //printf("Coût calculé pour x=%d, y=%d  cost : %d\n", new->loca.pos.x, new->loca.pos.y, new->cost);
-
     new->base = isBaseFound(new, map);
 
     if(isValidLocalisation(new->loca.pos, 5, 6) == 0){
@@ -220,7 +217,6 @@ t_nnode* trouverCoutMinFeuille(t_nnode* root) {
     int minCost = 20202020;
 
     if (root->nb_sons == 0) {
-        // If it's a leaf node, check and update minCost
         return root;
     }
 
@@ -422,7 +418,6 @@ void movements(t_localisation* loc, t_move move){
 
     loc->ori = (loc->ori + rst)%4;
 
-    //loc_init(loc->pos.x, loc->pos.y, (loc->ori+rst)%4);
 
 }
 
