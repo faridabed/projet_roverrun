@@ -15,3 +15,7 @@
 310	517	7540974923209574	CMakeFiles/untitled1.dir/stack.c.obj	47a913b04a8c3e0b
 340	536	7540974923428917	CMakeFiles/untitled1.dir/final.c.obj	8deea9ed08d913b3
 536	1157	7540974929594625	untitled1.exe	7e5a6b2b1d027f2a
+28	185	7540978206216461	CMakeFiles/untitled1.dir/final.c.obj	8deea9ed08d913b3
+5	189	7540978206260195	CMakeFiles/untitled1.dir/main.c.obj	93e1c70015181607
+17	245	7540978206819426	CMakeFiles/untitled1.dir/tree.c.obj	12639231b94d9d1d
+245	452	7540978208822972	untitled1.exe	7e5a6b2b1d027f2a
