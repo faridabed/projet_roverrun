@@ -20,7 +20,7 @@ typedef struct s_stack
  * @param size : the size of the stack
  * @return the stack
  */
-t_stack createStack(int);
+t_stack* createStack(int);
 
 /**
  * @brief Function to push a value in the stack
@@ -42,7 +42,7 @@ int pop(t_stack *);
  * @param stack : the stack
  * @return the top value
  */
-int top(t_stack);
+int top(t_stack*);
 
 
 #endif //UNTITLED1_STACK_H
