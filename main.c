@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include "map.h"
 #include "final.h"
@@ -106,7 +106,7 @@ int main() {
         printf("Position (%d, %d) : %s\n", pos.x, pos.y, valid ? "Valide" : "Invalide");
     }*/
 
-    /*//TEST PASSGE SUR CREVASSE
+    /*//TEST PASSAGE SUR CREVASSE
     t_position positions[] = {
         {2, 2},  // Une position potentiellement valide
         {0, 0},  // Coin supérieur gauche (normalement valide)
