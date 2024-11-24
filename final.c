@@ -19,10 +19,8 @@ void findBase(t_map map, int x, int y, t_orientation orientation){
             printf("\n\n%d coord x : %d y : %d\n\n", bestleaf->cost, bestleaf->loca.pos.x, bestleaf->loca.pos.y);
             dispMvmt(bestleaf);
         } else {
-            printf("\n\nAucune feuille valide trouvée.\n\n");
+            printf("\n\nAucune feuille valide trouvee.\n\n");
         }
-
-        //dispMvmt(bestleaf);
 
         if (bestleaf != NULL) {
             bestleaf->base = isBaseFound(bestleaf, map);

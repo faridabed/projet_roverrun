@@ -202,8 +202,8 @@ t_nnode* creerarbre(int dpth, t_map map, int x, int y, t_orientation ori, int nb
 
 
 t_nnode* trouverCoutMinFeuille(t_nnode* root) {
-    clock_t start, end;
-    start = clock();
+    //clock_t start, end;
+    //start = clock();
 
     if (root == NULL) {
         return NULL;
@@ -223,8 +223,8 @@ t_nnode* trouverCoutMinFeuille(t_nnode* root) {
             minLeaf = candidateLeaf;
         }
     }
-    end = clock();
-    printf("Temps de recherche de la feuille minimale : %.2f secondes\n", (double)(end - start) / CLOCKS_PER_SEC);
+    //end = clock();
+    //printf("Temps de recherche de la feuille minimale : %.2f secondes\n", (double)(end - start) / CLOCKS_PER_SEC);
 
 
     return minLeaf;
