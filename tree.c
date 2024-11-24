@@ -36,7 +36,6 @@ t_nnode* creernoeud(t_nnode* prev, int dpth, t_move* avails, int idx, t_localisa
 
     new->nb_sons = prev->nb_sons - 1;
     new->depth = dpth;
-    //  new->regcount = 0;
     new->move = avails[idx];
 
     new->loca.pos.x = loc->pos.x;
@@ -46,7 +45,7 @@ t_nnode* creernoeud(t_nnode* prev, int dpth, t_move* avails, int idx, t_localisa
 
     new->soils = getSoils(&new->loca, map);
     new->cost = getCost(&new->loca, map);
-    new->pathcost = prev ->pathcost + new->cost;
+    /* new->pathcost = prev ->pathcost + new->cost;*/
 
     if(prev->soils == 2){
         new->erg = 1;
@@ -138,20 +137,6 @@ t_nnode* creernoeud(t_nnode* prev, int dpth, t_move* avails, int idx, t_localisa
         new->sons[i] = creernoeud(new, new->depth+1, local,i, &new->loca, map, dpmax);
     }
 
-    //printf("node\n");
-    //printf("node x: %d y : %d ====== cost %d\n", new->loca.pos.x, new->loca.pos.x, new->cost);
-/*
-    switch (new->move) {
-        case F_10:    printf("F_10   "); break;
-        case F_20:    printf("F_20   "); break;
-        case F_30:    printf("F_30   "); break;
-        case B_10:    printf("B_10   "); break;
-        case T_LEFT:  printf("T_LEFT "); break;
-        case T_RIGHT: printf("T_RIGHT"); break;
-        case U_TURN:  printf("U_TURN "); break;
-    }
-
-*/
     return new;
 }
 
@@ -214,20 +199,12 @@ t_nnode* trouverCoutMinFeuille(t_nnode* root) {
     }
 
     t_nnode *minLeaf = NULL;
-    int minCost = 20202020;
+    int minCost = 848364;
 
     if (root->nb_sons == 0) {
         return root;
     }
 
-
-    /*if (root->nb_sons == 0) {
-        if (root->cost < minCost) {
-            minCost = root->cost; // Update the minimum cost
-            minLeaf = root;       // Update the pointer to the minimum-cost leaf
-        }
-    }
-    */
     for (int i = 0; i < root->nb_sons; i++) {
         t_nnode *candidateLeaf = trouverCoutMinFeuille(root->sons[i]);
         if (candidateLeaf != NULL && candidateLeaf->cost < minCost) {
