@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "map.h"
 #include "final.h"
-#include "loc.h"
-
 
 int main() {
     t_map map = createMapFromFile("..\\maps\\example1.map");

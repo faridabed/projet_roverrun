@@ -3,6 +3,7 @@
 #include "loc.h"
 #include "map.h"
 
+#include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -45,7 +46,7 @@ t_nnode* creernoeud(t_nnode* prev, int dpth, t_move* avails, int idx, t_localisa
 
     new->soils = getSoils(&new->loca, map);
     new->cost = getCost(&new->loca, map);
-    /* new->pathcost = prev ->pathcost + new->cost;*/
+    new->pathcost = prev ->pathcost + new->cost;
 
     if(prev->soils == 2){
         new->erg = 1;
@@ -164,6 +165,9 @@ t_nnode* creerracine(int dpth, int nbsons){
 }
 
 t_nnode* creerarbre(int dpth, t_map map, int x, int y, t_orientation ori, int nbsons, int dpmax, int regverif){
+    clock_t start, end;
+    start = clock();
+
     t_move* phase = NULL;
     phase = getRandomMoves(nbsons);
 
@@ -189,17 +193,24 @@ t_nnode* creerarbre(int dpth, t_map map, int x, int y, t_orientation ori, int nb
 
     printf("tree\n");
 
+    end = clock();
+    printf("Temps de construction de l'arbre : %.2f secondes\n", (double)(end - start) / CLOCKS_PER_SEC);
+
+
     return root;
 }
 
 
 t_nnode* trouverCoutMinFeuille(t_nnode* root) {
+    clock_t start, end;
+    start = clock();
+
     if (root == NULL) {
         return NULL;
     }
 
     t_nnode *minLeaf = NULL;
-    int minCost = 848364;
+    int minCost = 1000000;
 
     if (root->nb_sons == 0) {
         return root;
@@ -212,6 +223,9 @@ t_nnode* trouverCoutMinFeuille(t_nnode* root) {
             minLeaf = candidateLeaf;
         }
     }
+    end = clock();
+    printf("Temps de recherche de la feuille minimale : %.2f secondes\n", (double)(end - start) / CLOCKS_PER_SEC);
+
 
     return minLeaf;
 }
@@ -399,6 +413,7 @@ void movements(t_localisation* loc, t_move move){
 }
 
 void dispMvmt(t_nnode* node){
+    printf("Chemin depuis la racine :\n");
     for (int i = 0; i < node->depth; ++i) {
         switch (node->totmove[i]) {
             case F_10:    printf("F_10   "); break;
