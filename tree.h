@@ -46,10 +46,5 @@ void movements(t_localisation* loc, t_move move);
 
 void dispMvmt(t_nnode* node);
 
-void afficherArbre(t_nnode* node, int profondeur);
-
-void afficherChemin(t_nnode* feuille);
-
-void displayMenu();
 
 #endif //UNTITLED1_TREE_H

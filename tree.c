@@ -142,6 +142,28 @@ t_nnode* creernoeud(t_nnode* prev, int dpth, t_move* avails, int idx, t_localisa
 }
 
 
+
+t_nnode* creerracine(int dpth, int nbsons){
+    t_nnode* root = NULL;
+    root = malloc(sizeof(t_nnode));
+    if(root == NULL){
+        exit(EXIT_FAILURE);
+    }
+
+    root->nb_sons = nbsons;
+    root->depth = dpth;
+    root->pathcost = 0;
+
+    root->sons = malloc(root->nb_sons * sizeof(t_nnode*));
+    if(root->sons == NULL){
+        exit(EXIT_FAILURE);
+    }
+
+    printf("root\n");
+
+    return root;
+}
+
 t_nnode* creerarbre(int dpth, t_map map, int x, int y, t_orientation ori, int nbsons, int dpmax, int regverif){
     clock_t start, end;
     start = clock();
@@ -174,28 +196,6 @@ t_nnode* creerarbre(int dpth, t_map map, int x, int y, t_orientation ori, int nb
     end = clock();
     printf("Temps de construction de l'arbre : %.2f secondes\n", (double)(end - start) / CLOCKS_PER_SEC);
 
-
-    return root;
-}
-
-
-t_nnode* creerracine(int dpth, int nbsons){
-    t_nnode* root = NULL;
-    root = malloc(sizeof(t_nnode));
-    if(root == NULL){
-        exit(EXIT_FAILURE);
-    }
-
-    root->nb_sons = nbsons;
-    root->depth = dpth;
-    root->pathcost = 0;
-
-    root->sons = malloc(root->nb_sons * sizeof(t_nnode*));
-    if(root->sons == NULL){
-        exit(EXIT_FAILURE);
-    }
-
-    printf("root\n");
 
     return root;
 }
@@ -426,51 +426,4 @@ void dispMvmt(t_nnode* node){
         }
     }
     printf("\n\n\n");
-}
-
-void afficherArbre(t_nnode* node, int profondeur) {
-    if (node == NULL) return;
-
-    // Indentation pour représenter la profondeur
-    for (int i = 0; i < profondeur; ++i) {
-        printf("  ");
-    }
-
-    // Afficher les informations du nœud
-    printf("Noeud (profondeur %d) - Cout : %d, Position : (%d, %d)\n",
-           profondeur, node->cost, node->loca.pos.x, node->loca.pos.y);
-
-    // Parcourir les fils récursivement
-    for (int i = 0; i < node->nb_sons; ++i) {
-        afficherArbre(node->sons[i], profondeur + 1);
-    }
-}
-
-void afficherChemin(t_nnode* feuille) {
-    printf("Chemin depuis la racine :\n");
-    for (int i = 0; i < feuille->depth; ++i) {
-        switch (feuille->totmove[i]) {
-            case F_10:    printf("F_10 -> "); break;
-            case F_20:    printf("F_20 -> "); break;
-            case F_30:    printf("F_30 -> "); break;
-            case B_10:    printf("B_10 -> "); break;
-            case T_LEFT:  printf("T_LEFT -> "); break;
-            case T_RIGHT: printf("T_RIGHT -> "); break;
-            case U_TURN:  printf("U_TURN -> "); break;
-            default:      printf("UNKNOWN -> "); break;
-        }
-    }
-    printf("Fin\n");
-}
-
-void displayMenu() {
-    printf("\n--- MENU PRINCIPAL ---\n");
-    printf("1. Afficher la carte\n");
-    printf("2. Construire et afficher un arbre\n");
-    printf("3. Tester les mouvements\n");
-    printf("4. Tester la localisation (sortie de carte)\n");
-    printf("5. Tester le passage sur une crevasse\n");
-    printf("6. Trouver le chemin optimal\n");
-    printf("0. Quitter\n");
-    printf("----------------------\n");
 }
